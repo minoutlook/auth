@@ -1,0 +1,72 @@
+
+ @port = 8000
+ @host = http://localhost:{{port}}
+
+ @content-type = Content-Type: application/json  
+
+ @authorization = Authorization: Bearer {{Login.response.body.accessToken}}
+
+
+### LOGIN
+# @name Login
+POST {{host}}/auth/login
+{{content-type}}
+
+{
+	"username":"min",
+	"password":"min1"
+}
+
+### LOGOUT
+POST {{host}}/auth/logout
+{{authorization}}
+
+
+### GET ME
+GET {{host}}/auth/me
+{{authorization}}
+
+### GET
+GET {{host}}/admin
+{{authorization}}
+
+### GET By Id
+GET {{host}}/admin/622c539ac73b2e8a9df8984f
+
+
+### CREATE BY USER
+POST {{host}}/admin
+{{content-type}}
+
+{
+	"password":"min",
+	"username":"min",
+	"fullname":"min"
+}
+
+### CREATE BY USER
+POST {{host}}/admin
+{{authorization}}
+{{content-type}}
+
+{
+	"password":"min",
+	"username":"min",
+	"fullname":"min"
+}
+### UPDATE BY USER
+PATCH {{host}}/admin/622c539ac73b2e8a9df8984f
+{{authorization}}
+{{content-type}}
+
+{
+	"password":"qq",
+	"username":"qq",
+	"fullname":" qa"
+}
+
+
+### UPDATE BY USER
+DELETE {{host}}/admin/622c10a7d5f7696eccc61068
+{{authorization}}
+
